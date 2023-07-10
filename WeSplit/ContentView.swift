@@ -20,12 +20,19 @@ struct ContentView: View {
                 Section {
                     TextField("Amount", value: $checkAmount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
                         .keyboardType(.decimalPad)
-
+                } header: {
+                    Text("Bill Amount")
+                }
+                
+                Section {
                     Picker("Number of People", selection: $numberOfPeople) {
                         ForEach(2 ..< 100) {
                             Text("\($0) people")
                         }
                     }
+                    .pickerStyle(.menu)
+                } header: {
+                    Text("Number of People")
                 }
                 
                 Section {
